@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cucumber-js"
+    "test": "npx cucumber-js --format json:reports/cucumber_report.json && node generate-report.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,7 @@
   "type": "commonjs",
   "devDependencies": {
     "@cucumber/cucumber": "^12.2.0",
-    "@playwright/test": "^1.56.1"
+    "@playwright/test": "^1.56.1",
+    "cucumber-html-reporter": "^7.2.0"
   }
 }
