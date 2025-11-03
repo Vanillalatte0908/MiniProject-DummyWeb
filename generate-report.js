@@ -3,8 +3,8 @@ const fs = require('fs');
 
 const options = {
   theme: 'bootstrap',
-  jsonFile: 'reports/cucumber-report.json',
-  output: 'reports/cucumber-report.html',
+  jsonFile: 'reports/cucumber_report.json',
+  output: 'reports/cucumber_report.html',
   screenshotsDirectory: 'reports/screenshots/',
   storeScreenshots: true,
   reportSuiteAsScenarios: true,

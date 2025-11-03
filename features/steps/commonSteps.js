@@ -55,3 +55,10 @@ Then('I should take screenshot', async function () {
   this.attach(fs.readFileSync(screenshotPath), 'image/png');
   console.log(`📸 Screenshot saved: ${screenshotPath}`);
 }); 
+
+//add chart
+Then ('I add item to cart by id "(.*)"', async (itemId) => {
+  const itemSelector = `#${itemId}`;
+  await page.click(itemSelector);
+  console.log(`🛒 Added item to cart: ${itemId}`);
+});
