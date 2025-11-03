@@ -1,15 +1,11 @@
 Feature: add chart
-  Scenario: add chart
-    Given I open the website "https://www.saucedemo.com"
-    Then I should see "Swag Labs" in the title
+
+  Scenario: add chart 1
+    Then I should click "//*[@id='add-to-cart-sauce-labs-backpack']"
     Then I should take screenshot
-    Then I should click "//*[@id="user-name"]" 
-    Then I should sendtext "standard_user"
+
+  Scenario: add chart more than 1
+    Then I should click "//*[@id='add-to-cart-sauce-labs-backpack']"
     Then I should take screenshot
-    Then I should click "//*[@id="password"]"
-    Then I should sendtext "secret_sauce"
-    Then I should take screenshot
-    Then I should click "//*[@id="login-button"]"
-    Then I should take screenshot 
-    Then I should click "//*[@id="add-to-cart-sauce-labs-backpack"]"
+    Then I should click "//*[@id='add-to-cart-sauce-labs-bike-light']"
     Then I should take screenshot

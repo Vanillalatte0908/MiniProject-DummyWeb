@@ -1,21 +1,24 @@
-const { Given, Then, Before, After } = require('@cucumber/cucumber');
+const { Before, After, Given, Then } = require('@cucumber/cucumber');
 const { chromium } = require('playwright');
-const { expect } = require('@playwright/test');
 const fs = require('fs');
-let browser, page;
+const path = require('path');
 
-Before(async () => {
-  browser = await chromium.launch({ headless: false });
-  page = await browser.newPage();
+let browser, page, scenarioName;
+
+Before(async function (scenario) {
+  scenarioName = scenario.pickle.name.replace(/\s+/g, '_');
+  browser = await chromium.launch({ headless: true });
+  const context = await browser.newContext();
+  page = await context.newPage();
+
+  // Auto login
+  await page.goto('https://www.saucedemo.com');
+  await page.fill('#user-name', 'standard_user');
+  await page.fill('#password', 'secret_sauce');
+  await page.click('#login-button');
 });
 
-After(async function (scenario) {
-  if (scenario.result?.status === 'FAILED') {
-    const screenshotPath = `reports/screenshots/${Date.now()}-${scenario.pickle.name}.png`;
-    await page.screenshot({ path: screenshotPath, fullPage: true });
-    this.attach(fs.readFileSync(screenshotPath), 'image/png');
-    console.log(`❌ Screenshot captured for failed scenario: ${screenshotPath}`);
-  }
+After(async () => {
   await browser.close();
 });
 
@@ -23,42 +26,25 @@ Given('I open the website {string}', async (url) => {
   await page.goto(url);
 });
 
-Then('I should see {string} in the title', async (expectedTitle) => {
+Then('I should see {string} in the title', async (expected) => {
   const title = await page.title();
-  expect(title).toContain(expectedTitle);
+  if (!title.includes(expected)) throw new Error(`Title mismatch: ${title}`);
 });
 
-// Wait for X seconds (only one definition)
-Then('I wait for {int} seconds', async (seconds) => {
-  await page.waitForTimeout(seconds * 1000);
-  console.log(`⏱️ Waited for ${seconds} seconds`);
+Then('I should click {string}', async (selector) => {
+  const element = page.locator(selector);
+  if (await element.count() === 0) throw new Error(`Element not found: ${selector}`);
+  await element.first().click();
 });
 
-
-// Click by XPath
-Then(/^I should click "(.*)"$/, async (xpath) => {
-  const element = page.locator(`xpath=${xpath}`);
-  await element.click();
-  console.log(`🖱️ Clicked element: ${xpath}`);
-});
-
-// Type text into active element
-Then(/^I should sendtext "(.*)"$/, async (text) => {
+Then('I should sendtext {string}', async (text) => {
   await page.keyboard.type(text);
-  console.log(`⌨️ Typed text: ${text}`);
 });
-
 
 Then('I should take screenshot', async function () {
-  const screenshotPath = `reports/screenshots/${Date.now()}.png`;
-  await page.screenshot({ path: screenshotPath, fullPage: true });
-  this.attach(fs.readFileSync(screenshotPath), 'image/png');
-  console.log(`📸 Screenshot saved: ${screenshotPath}`);
-}); 
-
-//add chart
-Then ('I add item to cart by id "(.*)"', async (itemId) => {
-  const itemSelector = `#${itemId}`;
-  await page.click(itemSelector);
-  console.log(`🛒 Added item to cart: ${itemId}`);
+  const dir = path.join('reports', 'screenshots', scenarioName);
+  fs.mkdirSync(dir, { recursive: true });
+  const filePath = path.join(dir, `${Date.now()}.png`);
+  await page.screenshot({ path: filePath });
+  this.attach(fs.readFileSync(filePath), 'image/png'); // 👈 Attach to Cucumber report
 });
