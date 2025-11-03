@@ -7,7 +7,7 @@ let browser, page, scenarioName;
 
 Before(async function (scenario) {
   scenarioName = scenario.pickle.name.replace(/\s+/g, '_');
-  browser = await chromium.launch({ headless: true });
+  browser = await chromium.launch({ headless: false }); // change to true in CI
   const context = await browser.newContext();
   page = await context.newPage();
 
@@ -31,7 +31,12 @@ Then('I should see {string} in the title', async (expected) => {
   if (!title.includes(expected)) throw new Error(`Title mismatch: ${title}`);
 });
 
-Then('I should click {string}', async (selector) => {
+/**
+ * Flexible click step:
+ * Works with both CSS (#id, .class) and XPath (//*[@id='something'])
+ * Accepts either single or double quotes
+ */
+Then(/^I should click\s+["']?(.+?)["']?$/, async (selector) => {
   const element = page.locator(selector);
   if (await element.count() === 0) throw new Error(`Element not found: ${selector}`);
   await element.first().click();
@@ -41,10 +46,10 @@ Then('I should sendtext {string}', async (text) => {
   await page.keyboard.type(text);
 });
 
-Then('I should take screenshot', async function () {
+Then(/^I should take\s*screenshot$/, async function () {
   const dir = path.join('reports', 'screenshots', scenarioName);
   fs.mkdirSync(dir, { recursive: true });
   const filePath = path.join(dir, `${Date.now()}.png`);
   await page.screenshot({ path: filePath });
-  this.attach(fs.readFileSync(filePath), 'image/png'); // 👈 Attach to Cucumber report
+  this.attach(fs.readFileSync(filePath), 'image/png'); // Attach to JSON report for embedding
 });
