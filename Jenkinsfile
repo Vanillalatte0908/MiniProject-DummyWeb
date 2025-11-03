@@ -3,38 +3,36 @@ pipeline {
 
   environment {
     NODE_VERSION = '18'
-    REPORTS_DIR = 'reports'
-    PLAYWRIGHT_REPORT = 'playwright-report'
+    REPORT_DIR = 'reports'
   }
 
   stages {
     stage('Checkout') {
       steps {
-        echo '📥 Checking out source code...'
+        echo '📦 Checking out source code...'
         checkout scm
       }
     }
 
     stage('Setup Node.js') {
       steps {
-        echo '⚙️ Setting up Node.js environment...'
         sh '''
-          if ! command -v node >/dev/null 2>&1; then
+          echo "🧰 Checking Node.js..."
+          if ! command -v node > /dev/null; then
             echo "Installing Node.js ${NODE_VERSION}..."
             curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash -
             apt-get install -y nodejs
-          else
-            echo "Node.js already installed: $(node -v)"
           fi
-          echo "NPM version: $(npm -v)"
+          node -v
+          npm -v
         '''
       }
     }
 
     stage('Install Dependencies') {
       steps {
-        echo '📦 Installing project dependencies...'
         sh '''
+          echo "📦 Installing dependencies..."
           npm ci || npm install
         '''
       }
@@ -42,78 +40,61 @@ pipeline {
 
     stage('Install Playwright Browsers') {
       steps {
-        echo '🧩 Installing Playwright browsers...'
+        echo '🎭 Installing Playwright browsers...'
         sh 'npx playwright install --with-deps'
       }
     }
 
-    stage('Run Playwright Tests') {
+    stage('Run Cucumber BDD Tests') {
       steps {
-        echo '🎭 Running Playwright test suite...'
-        // Adjust your Playwright command as needed
-        sh 'npx playwright test --reporter=line'
-      }
-    }
-
-    stage('Run Cucumber Tests') {
-      steps {
-        echo '🥒 Running Cucumber (BDD) tests...'
-        // Generate JSON report; prevent pipeline from failing due to test errors
-        sh 'npx cucumber-js --format json:reports/cucumber_report.json || true'
+        echo '🥒 Running Cucumber BDD test suite...'
+        // Use npm test or direct cucumber-js
+        sh '''
+          mkdir -p ${REPORT_DIR}
+          npx cucumber-js --format json:${REPORT_DIR}/cucumber-report.json || true
+        '''
       }
     }
 
     stage('Generate Cucumber HTML Report') {
       steps {
-        echo '🧾 Generating Cucumber HTML report...'
+        echo '📊 Generating Cucumber HTML report...'
         sh '''
-          if [ -f reports/cucumber_report.json ]; then
-            echo "Generating Cucumber report..."
+          if [ -f ${REPORT_DIR}/cucumber-report.json ]; then
             node generate-report.js
           else
-            echo "⚠️ No cucumber_report.json found — skipping report generation."
+            echo "⚠️ cucumber-report.json not found, skipping report generation."
           fi
         '''
-      }
-    }
-
-    stage('Generate Playwright Report') {
-      steps {
-        echo '📊 Generating Playwright HTML report...'
-        sh 'npx playwright show-report || true'
       }
     }
   }
 
   post {
     always {
-      echo '📦 Archiving test reports...'
+      echo '📁 Archiving test reports...'
 
-      // Archive reports as Jenkins artifacts
-      archiveArtifacts artifacts: "${PLAYWRIGHT_REPORT}/**", allowEmptyArchive: true
-      archiveArtifacts artifacts: "${REPORTS_DIR}/**", allowEmptyArchive: true
+      // Archive all generated reports
+      archiveArtifacts artifacts: 'reports/**', allowEmptyArchive: true
 
-      // Publish Playwright report
+      // Publish Cucumber HTML Report (requires HTML Publisher plugin)
       publishHTML([
         allowMissing: true,
         alwaysLinkToLastBuild: true,
         keepAll: true,
-        reportDir: "${PLAYWRIGHT_REPORT}",
-        reportFiles: 'index.html',
-        reportName: 'Playwright Test Report'
+        reportDir: 'reports',
+        reportFiles: 'cucumber-report.html',
+        reportName: 'Cucumber BDD Report'
       ])
 
-      // Publish Cucumber report
-      publishHTML([
-        allowMissing: true,
-        alwaysLinkToLastBuild: true,
-        keepAll: true,
-        reportDir: "${REPORTS_DIR}/html",
-        reportFiles: 'index.html',
-        reportName: 'Cucumber Test Report'
-      ])
-
-      echo '✅ Test pipeline completed.'
+      echo '🧹 Cleaning up workspace...'
+      cleanWs()
+    }
+    success {
+      echo '✅ BDD pipeline completed successfully!'
+    }
+    failure {
+      echo '❌ Tests failed! Check Cucumber HTML report for details.'
     }
   }
 }
