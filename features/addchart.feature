@@ -1,23 +1,15 @@
-Feature: add chart
+Feature: Continuous add-to-cart flow
 
-  Scenario: add chart 1
-    Then I should click "//*[@id='add-to-cart-sauce-labs-backpack']"
-    Then I should take screenshot
-
-  Scenario: add chart more than 1
-    Then I should click "//*[@id='add-to-cart-sauce-labs-backpack']"
-    Then I should take screenshot
-    Then I should click "//*[@id='add-to-cart-sauce-labs-bike-light']"
+  Scenario: Add single item to cart
+    Then I should add item "backpack" if not added already
     Then I should take screenshot
 
-  Scenario: see Empty chart
-    Then I should click "//*[@id="shopping_cart_container"]/a"
+  Scenario: Add more than one item
+    Then I should add item "bike-light" if not added already
+    Then I should add item "bolt-t-shirt" if not added already
     Then I should take screenshot
 
-  Scenario: see chat fill
-    Then I should click "//*[@id='add-to-cart-sauce-labs-backpack']"
+  Scenario: Verify already added items
+    Then I should add item "backpack" if not added already
+    Then I should add item "bike-light" if not added already
     Then I should take screenshot
-    Then I should click "//*[@id='add-to-cart-sauce-labs-bike-light']"
-    Then I should take screenshot
-    Then I should click "//*[@id="shopping_cart_container"]/a"
-    Then I should takescreenshot
