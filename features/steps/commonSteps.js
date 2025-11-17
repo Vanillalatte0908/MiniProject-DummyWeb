@@ -1,37 +1,46 @@
-const { BeforeAll, Before,AfterAll, Given, Then } = require('@cucumber/cucumber');
+const { BeforeAll, Before, AfterAll, Given, Then, setDefaultTimeout } = require('@cucumber/cucumber');
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 
-let browser, page;
+setDefaultTimeout(60 * 1000); // Increase default timeout
 
+let browser, page, scenarioName;
+
+// ---- Launch browser ONCE (fast)
 BeforeAll(async () => {
-  console.log('🚀 Launching browser once...');
+  console.log('🚀 Launching browser...');
   browser = await chromium.launch({ headless: false });
   const context = await browser.newContext();
   page = await context.newPage();
+});
 
+// ---- Before EACH scenario (login)
+Before(async function (scenario) {
+  scenarioName = scenario.pickle.name.replace(/\s+/g, '_');
+  console.log(`🎯 Running scenario: ${scenarioName}`);
+
+  // Clean fresh state
   await page.goto('https://www.saucedemo.com');
   await page.fill('#user-name', 'standard_user');
   await page.fill('#password', 'secret_sauce');
   await page.click('#login-button');
+
   console.log('✅ Logged in successfully!');
 });
 
-// --- Capture each scenario name
-Before(function (scenario) {
-  scenarioName = scenario.pickle.name.replace(/\s+/g, '_');
-  console.log(`🎯 Running scenario: ${scenarioName}`);
-});
-
+// ---- Close browser
 AfterAll(async () => {
   console.log('🧹 Closing browser...');
   await browser.close();
 });
 
+// ---- Steps ----
+
 Given('I open the website {string}', async (url) => {
   await page.goto(url);
 });
+
 Then(/^I should click\s+["']?(.+?)["']?$/, async (selector) => {
   const element = page.locator(selector);
   if (await element.count() === 0)
