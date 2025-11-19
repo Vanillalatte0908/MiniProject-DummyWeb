@@ -6,35 +6,44 @@ test('test with logic', async ({ page }) => {
   await page.locator('[data-test="username"]').fill('standard_user');
   await page.locator('[data-test="password"]').fill('secret_sauce');
   await page.locator('[data-test="login-button"]').click();
-
-  await page.waitForTimeout(5000);
-
-  // ⭐ Logic: Check if menu button exists before clicking
-  if (await page.getByRole('button', { name: 'Open Menu' }).isVisible()) {
-    await page.getByRole('button', { name: 'Open Menu' }).click();
+  await page.waitForTimeout(2000);
+  
+  const menuButton = page.getByRole('button', { name: 'Open Menu' });
+  if (await menuButton.isVisible()) {
+    await menuButton.click();
   } else {
     console.log('Menu button is not visible.');
   }
+  const addBackpack = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
+  const addBikeLight = page.locator('[data-test="add-to-cart-sauce-labs-bike-light"]');
+  const removeBackpack = page.locator('[data-test="remove-sauce-labs-backpack"]');
+  const removeBikeLight = page.locator('[data-test="remove-sauce-labs-bike-light"]');
 
-  // ⭐ Logic: Check if item is already in cart
-  const addButton = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]');
-  const addbutton1 = page.locator ('[data-test="add-to-cart-sauce-labs-bike-light"]');
-  const removeButton = page.locator('[data-test="remove-sauce-labs-backpack"]');
+  if (await removeBackpack.isVisible()) {
+    console.log("Backpack already in cart → removing it.");
+    await removeBackpack.click();
+    await page.screenshot({ path: 'backpack-removed.png' });
 
+  } else if (await removeBikeLight.isVisible()) {
+    console.log("Bike light already in cart → removing it.");
+    await removeBikeLight.click();
+    await page.screenshot({ path: 'bikelight-removed.png' });
 
-  if (await addButton.isVisible()) {
-    console.log("Item is NOT in cart, adding it...");
-    await page.takeScreenshot({ path: 'item-added.png' });
-    await addButton.click();
-  } else if (await addbutton1.isVisible()) {
-    console.log("Item is NOT in cart, adding it...");
-    await page.takeScreenshot({ path: 'item-added.png' });
-    await addbutton1.click();
-  }else if (await removeButton.isVisible()) {
-    console.log("Item is already in cart, skipping add.");
-    await page.takeScreenshot({ path: 'item-already-in-cart.png' });
-    await removeButton.click();
+  } else if (await addBackpack.isVisible()) {
+    console.log("Backpack NOT in cart → adding it.");
+    await addBackpack.click();
+    await page.screenshot({ path: 'backpack-added.png' });
+
+  } else if (await addBikeLight.isVisible()) {
+    console.log("Bike light NOT in cart → adding it.");
+    await addBikeLight.click();
+    await page.screenshot({ path: 'bikelight-added.png' });
+
+  } else {
+    console.log("No add/remove buttons found for items.");
   }
-  await page.waitForTimeout(5000);
+
+  await page.waitForTimeout(1500);
   await page.locator('[data-test="shopping-cart-link"]').click();
+
 });
