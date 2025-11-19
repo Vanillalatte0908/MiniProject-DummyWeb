@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  
   "scripts": {
     "test": "npx cucumber-js --format json:reports/cucumber_report.json && node generate-report.js"
   },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
