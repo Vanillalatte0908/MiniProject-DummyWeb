@@ -1,7 +1,17 @@
-// Basic Playwright config so VS Code can detect tests
-module.exports = {
+// playwright.config.js
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
   testDir: './tests',
+
+  reporter: [
+    ['list'],                // optional: shows results in terminal
+    ['allure-playwright']    // ⭐ THIS is the Allure reporter
+  ],
+
   use: {
-    headless: false,
-  },
-};
+    trace: 'on',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure'
+  }
+});
