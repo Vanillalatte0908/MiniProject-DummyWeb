@@ -83,4 +83,7 @@ Then('I should remove item {string} if not added already', async (itemName) => {
   }
 });
 
-
+  Then('I logouts', async function () {
+    await page.getByRole('button', { name: 'Open Menu' }).click();
+    await page.locator('[data-test="logout-sidebar-link"]').click();
+  });
