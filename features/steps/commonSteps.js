@@ -48,6 +48,27 @@ Then(/^I should click\s+["']?(.+?)["']?$/, async (selector) => {
   await element.first().click();
 });
 
+Then('I should finish my chart', async function () { 
+  const addButton = page.locator('#add-to-cart-sauce-labs-backpack');
+  const removeButton = page.locator('#remove-sauce-labs-backpack');
+
+  if (await removeButton.count() > 0) {
+    console.log(`🟡 Item already in cart, skipping add.`);
+  } else {
+    await addButton.click();
+    console.log(`✅ Item added to cart.`);
+  }
+
+  await page.locator('[data-test="shopping-cart-link"]').click();
+  await page.locator('[data-test="checkout"]').click();
+  await page.locator('[data-test="firstName"]').fill('sauce');
+  await page.locator('[data-test="lastName"]').fill('lab');
+  await page.locator('[data-test="postalCode"]').fill('13910');
+  await page.locator('[data-test="continue"]').click();
+  await page.locator('[data-test="finish"]').click();
+});
+
+
 Then('I should sendtext {string}', async (text) => {
   await page.keyboard.type(text);
 });
@@ -83,7 +104,15 @@ Then('I should remove item {string} if not added already', async (itemName) => {
   }
 });
 
-  Then('I logouts', async function () {
+
+
+Then('I logouts', async function () {
     await page.getByRole('button', { name: 'Open Menu' }).click();
     await page.locator('[data-test="logout-sidebar-link"]').click();
   });
+Then ('I should Login Invalid', async function () {
+    await page.goto('https://www.saucedemo.com');
+    await page.fill('#user-name', 'invalid_username');
+    await page.fill('#password', 'secret_sauce');
+    await page.click('#login-button');  
+});
