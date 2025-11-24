@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>Cucumber Feature Report</title>
-  <link rel="icon" href="https://www.lambdatest.com/favicon.ico">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <style type="text/css">
-    .panel-heading {
+  <head>
+    <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
+    <style type="text/css">
+      .panel-heading {
     padding: 0;
 }
 
@@ -261,10 +260,6 @@ pre {
     color: #616161;
 }
 
-.stepname {
-    word-wrap: break-word;
-}
-
 .feature-passed {
     display: block;
 }
@@ -289,181 +284,119 @@ pre {
     min-width: 100%;
 }
 
-.ellipsis {
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: all .2s linear;
-    white-space: nowrap;
-    padding:.5rem 1rem;
-}
-.ellipsis:focus, .ellipsis:hover {
-  color:transparent;
-}
-.ellipsis:focus:after,.ellipsis:hover:after{
-    content:attr(data-text);
-    overflow: visible;
-    text-overflow: inherit;
-    background: #fff;
-    position: absolute;
-    left:auto;
-    top:auto;
-    width: auto;
-    max-width: 100%;
-    border: 1px solid #eaebec;
-    padding: 0 .5rem;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.28);
-    white-space: normal;
-    word-wrap: break-word;
-    display:block;
-    color:black;
-    margin-top:-1.25rem;
-    z-index: 1;
-  }
 
-    /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
-    .google-visualization-tooltip {
-      pointer-events: none;
-    }
-
-    .count-wrapper {
-      display: flex;
-      gap: 15px;
-    }
-
-    .card {
-      border: 1px solid #f5f5f5;
-      padding: 15px;
-      color: #fff;
-      border-radius: 5px;
-      flex: 1;
-    }
-
-    .generated-on {
-      margin-right: 10px;
-    }
-
-    .card h4 {
-      font-size: 15px;
-    }
-
-    .red-box {
-      background: #d9534e;
-    }
-
-    .blue-box {
-      background: #0074ff;
-    }
-
-    .yellow-box {
-      background: #f0ad4e;
-    }
-
-    .saffron-box {
-      background: #ff9933;
-    }
-
-    .green-box {
-      background: #5cb85b;
-    }
-
-    .gray-box {
-      background: #999;
-    }
-
-    .amb-box {
-      background: #218bcf;
-    }
-
-    .undefined-box {
-      background: #22c2e2;
-    }
-
-    .mb-20px {
-      margin-bottom: 20px;
-    }
-  </style>
-  <meta charset="UTF-8">
-</head>
-
-<body>
-
-  <div class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        
-          <a class="navbar-brand">
-            Cucumberjs Report
-          </a>
-          <div class="project-name visible-md visible-lg">
-            webdummy
-          </div>
-          <div class="label-container">
-            <div class="generated-on">
-              Tue Nov 04 2025 09:30:01 GMT+0700 (Western Indonesia Time)
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-
-    <div class="count-wrapper mb-20px">
-      <div class="card blue-box">
-        <div class="feature-title">
-          <h4>All Scenarios</h2>
-        </div>
-        <div class="feature-value">
-          <h5>
-            5
-          </h5>
-        </div>
-      </div>
-      <div class="card green-box">
-        <div class="feature-title">
-          <h4>Passed Scenarios</h2>
-        </div>
-        <div class="feature-value">
-          <h5>
-            5
-          </h5>
-        </div>
-      </div>
-      <div class="card red-box">
-        <div class="feature-title">
-          <h4>Failed Scenarios</h2>
-        </div>
-        <div class="feature-value">
-          <h5>
-            0
-          </h5>
-        </div>
-      </div>
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
       
-          
-              
-                  
-                      
-    </div>
-    <div class="row">
-      <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
-      <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
+    </style>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+        
+          <a class="navbar-brand">Cucumberjs Report</a>
+          <div class="project-name visible-md visible-lg">webdummy</div>
+          <div class="label-container">
+                <div class="generated-on">
+                  Mon Nov 24 2025 10:05:28 GMT+0700 (Western Indonesia Time)
+                </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <p class="text-left">
-        Execution Time: 1s 277ms
-      </p>
-      <p class="text-right">
-        <a id="expand_all">Expand All</a>
-        <span> | </span>
-        <a id="collapse_all">Collapse All</a>
-      </p>
-    </div>
+    <div class="container">
 
-    
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              5
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              5
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
+      <div class="row">
+        <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
+        <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+      </div>
+
+      
       <div class="panel panel-default">
         <div class="panel-heading open">
           <h4 class="panel-title">
@@ -478,69 +411,54 @@ pre {
           <div class="panel-body">
             <div class="row">
               
-                
-                  
-                    
-                      <div class="clearfix metadata col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <div class=pull-left>
-                          <strong>
-                            App:
-                          </strong>
-                          Saucedemo
-                        </div>
-                      </div>
-                      
-                  
-                    
-                      <div class="clearfix metadata col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <div class=pull-right-lg>
-                          <strong>
-                            Test Environment:
-                          </strong>
-                          QA
-                        </div>
-                      </div>
-                      
-                  
-                    
-                      <div class="clearfix metadata col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <div class=pull-left>
-                          <strong>
-                            Browser:
-                          </strong>
-                          Chromium
-                        </div>
-                      </div>
-                      
-                  
-                    
-                      <div class="clearfix metadata col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <div class=pull-right-lg>
-                          <strong>
-                            Platform:
-                          </strong>
-                          darwin
-                        </div>
-                      </div>
-                      
-                  
-                    
-                      <div class="clearfix metadata col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <div class=pull-left>
-                          <strong>
-                            Executed:
-                          </strong>
-                          Local
-                        </div>
-                      </div>
-                      
+             
+              
+              
+              <div class="clearfix metadata col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class=pull-left>
+                    <strong> App: </strong>Saucedemo
+                  </div>
+              </div>
+              
+              
+              
+              <div class="clearfix metadata col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class=pull-right-lg>
+                    <strong> Test Environment: </strong>QA
+                  </div>
+              </div>
+              
+              
+              
+              <div class="clearfix metadata col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class=pull-left>
+                    <strong> Browser: </strong>Chromium
+                  </div>
+              </div>
+              
+              
+              
+              <div class="clearfix metadata col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class=pull-right-lg>
+                    <strong> Platform: </strong>darwin
+                  </div>
+              </div>
+              
+              
+              
+              <div class="clearfix metadata col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                  <div class=pull-left>
+                    <strong> Executed: </strong>Local
+                  </div>
+              </div>
+              
             </div>
           </div>
         </div>
       </div>
       
 
-        
+      
 
 
 <div class="row" xmlns="http://www.w3.org/1999/html">
@@ -556,16 +474,11 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturewebdummyc3664b44-0ef5-4736-8f70-640864749ca3">
+                    <a data-toggle="collapse" href="#collapseFeaturewebdummye4b709b3-7d8e-44bd-8967-6d86f5254872">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Feature:</b>Continuous add-to-cart flow
                         <span class="label-container">
-
-                        
-
-                        <span>418ms</span>
-                                
               <span class="label label-success"
                                                          title="3 Scenarios Passed">3</span>
               
@@ -577,7 +490,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturewebdummyc3664b44-0ef5-4736-8f70-640864749ca3" class="panel-collapse collapse">
+            <div id="collapseFeaturewebdummye4b709b3-7d8e-44bd-8967-6d86f5254872" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -590,17 +503,16 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariowebdummya997fc85-f5dc-4267-9f0e-2052b368deed">
+                                <a data-toggle="collapse" href="#collapseScenariowebdummyf6a8ac2e-459b-445e-9380-59812c932c97">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b><div class="ellipsis" data-text="Add single item to cart">Add single item to cart</div>
+                                            <b>Scenario:</b>Add single item to cart
                                         </div>
                                         <div>
                             <span class="label-container ">
-                                <span>147ms</span>
                               
                               <span class="label label-success"
                                                                title="2 Steps Passed">2</span>
@@ -616,7 +528,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariowebdummya997fc85-f5dc-4267-9f0e-2052b368deed"
+                        <div id="collapseScenariowebdummyf6a8ac2e-459b-445e-9380-59812c932c97"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -635,7 +547,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should add item &quot;backpack&quot; if not added already</span>
+                          <span> I should add item &quot;backpack&quot; if not added already</span>
                             
                           
                               <span class="step-duration">
@@ -673,7 +585,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should take screenshot</span>
+                          <span> I should take screenshot</span>
                             
                           
                               <span class="step-duration">
@@ -761,17 +673,16 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariowebdummyb16e53a7-6334-48b4-826a-ed1ad24c63f6">
+                                <a data-toggle="collapse" href="#collapseScenariowebdummy7dfae8a4-90fa-470a-bb8d-24573843dc71">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b><div class="ellipsis" data-text="Add more than one item">Add more than one item</div>
+                                            <b>Scenario:</b>Add more than one item
                                         </div>
                                         <div>
                             <span class="label-container ">
-                                <span>169ms</span>
                               
                               <span class="label label-success"
                                                                title="3 Steps Passed">3</span>
@@ -787,7 +698,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariowebdummyb16e53a7-6334-48b4-826a-ed1ad24c63f6"
+                        <div id="collapseScenariowebdummy7dfae8a4-90fa-470a-bb8d-24573843dc71"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -806,7 +717,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should add item &quot;bike-light&quot; if not added already</span>
+                          <span> I should add item &quot;bike-light&quot; if not added already</span>
                             
                           
                               <span class="step-duration">
@@ -844,7 +755,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should add item &quot;bolt-t-shirt&quot; if not added already</span>
+                          <span> I should add item &quot;bolt-t-shirt&quot; if not added already</span>
                             
                           
                               <span class="step-duration">
@@ -882,7 +793,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should take screenshot</span>
+                          <span> I should take screenshot</span>
                             
                           
                               <span class="step-duration">
@@ -970,17 +881,16 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariowebdummy78824a47-9d4f-4259-a2cf-25689052ba51">
+                                <a data-toggle="collapse" href="#collapseScenariowebdummy83774770-b667-4f9f-9563-d93d62e56c61">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b><div class="ellipsis" data-text="Verify already added items">Verify already added items</div>
+                                            <b>Scenario:</b>Verify already added items
                                         </div>
                                         <div>
                             <span class="label-container ">
-                                <span>101ms</span>
                               
                               <span class="label label-success"
                                                                title="3 Steps Passed">3</span>
@@ -996,7 +906,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariowebdummy78824a47-9d4f-4259-a2cf-25689052ba51"
+                        <div id="collapseScenariowebdummy83774770-b667-4f9f-9563-d93d62e56c61"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1015,7 +925,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should add item &quot;backpack&quot; if not added already</span>
+                          <span> I should add item &quot;backpack&quot; if not added already</span>
                             
                           
                               <span class="step-duration">
@@ -1053,7 +963,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should add item &quot;bike-light&quot; if not added already</span>
+                          <span> I should add item &quot;bike-light&quot; if not added already</span>
                             
                           
                               <span class="step-duration">
@@ -1091,7 +1001,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should take screenshot</span>
+                          <span> I should take screenshot</span>
                             
                           
                               <span class="step-duration">
@@ -1190,16 +1100,11 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturewebdummybe64f3d5-caf0-4743-b13a-b993d90c1c50">
+                    <a data-toggle="collapse" href="#collapseFeaturewebdummy012ad180-012e-48e6-8bff-6729589ad30a">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Feature:</b>see chart
                         <span class="label-container">
-
-                        
-
-                        <span>859ms</span>
-                                
               <span class="label label-success"
                                                          title="2 Scenarios Passed">2</span>
               
@@ -1211,7 +1116,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturewebdummybe64f3d5-caf0-4743-b13a-b993d90c1c50" class="panel-collapse collapse">
+            <div id="collapseFeaturewebdummy012ad180-012e-48e6-8bff-6729589ad30a" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -1224,17 +1129,16 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariowebdummydb0de5a8-cec2-4029-b85f-a39346b9c230">
+                                <a data-toggle="collapse" href="#collapseScenariowebdummy0b8127a2-3be2-4a17-9ce1-2867d2a3d605">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b><div class="ellipsis" data-text="see Empty chart">see Empty chart</div>
+                                            <b>Scenario:</b>see Empty chart
                                         </div>
                                         <div>
                             <span class="label-container ">
-                                <span>574ms</span>
                               
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
@@ -1250,7 +1154,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariowebdummydb0de5a8-cec2-4029-b85f-a39346b9c230"
+                        <div id="collapseScenariowebdummy0b8127a2-3be2-4a17-9ce1-2867d2a3d605"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1269,7 +1173,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should remove item &quot;bike-light&quot; if not added already</span>
+                          <span> I should remove item &quot;bike-light&quot; if not added already</span>
                             
                           
                               <span class="step-duration">
@@ -1307,7 +1211,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should remove item &quot;backpack&quot; if not added already</span>
+                          <span> I should remove item &quot;backpack&quot; if not added already</span>
                             
                           
                               <span class="step-duration">
@@ -1345,7 +1249,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should remove item &quot;bolt-t-shirt&quot; if not added already</span>
+                          <span> I should remove item &quot;bolt-t-shirt&quot; if not added already</span>
                             
                           
                               <span class="step-duration">
@@ -1383,7 +1287,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should click &quot;//*[@id=&quot;shopping_cart_container&quot;]&quot;</span>
+                          <span> I should click &quot;//*[@id=&quot;shopping_cart_container&quot;]&quot;</span>
                             
                           
                               <span class="step-duration">
@@ -1421,7 +1325,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should take screenshot</span>
+                          <span> I should take screenshot</span>
                             
                           
                               <span class="step-duration">
@@ -1507,7 +1411,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should click &quot;//*[@id=&quot;continue-shopping&quot;]&quot;</span>
+                          <span> I should click &quot;//*[@id=&quot;continue-shopping&quot;]&quot;</span>
                             
                           
                               <span class="step-duration">
@@ -1545,7 +1449,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should take screenshot</span>
+                          <span> I should take screenshot</span>
                             
                           
                               <span class="step-duration">
@@ -1633,17 +1537,16 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariowebdummy21af0551-d7dd-415f-b208-ae3927a24788">
+                                <a data-toggle="collapse" href="#collapseScenariowebdummy886a54d7-fa94-41b7-a1ed-3d0ea8c437ed">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b><div class="ellipsis" data-text="see chat fill">see chat fill</div>
+                                            <b>Scenario:</b>see chat fill
                                         </div>
                                         <div>
                             <span class="label-container ">
-                                <span>285ms</span>
                               
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
@@ -1659,7 +1562,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariowebdummy21af0551-d7dd-415f-b208-ae3927a24788"
+                        <div id="collapseScenariowebdummy886a54d7-fa94-41b7-a1ed-3d0ea8c437ed"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1678,7 +1581,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should add item &quot;bike-light&quot; if not added already</span>
+                          <span> I should add item &quot;bike-light&quot; if not added already</span>
                             
                           
                               <span class="step-duration">
@@ -1716,7 +1619,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should add item &quot;backpack&quot; if not added already</span>
+                          <span> I should add item &quot;backpack&quot; if not added already</span>
                             
                           
                               <span class="step-duration">
@@ -1754,7 +1657,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should click &quot;//*[@id=&quot;shopping_cart_container&quot;]&quot;</span>
+                          <span> I should click &quot;//*[@id=&quot;shopping_cart_container&quot;]&quot;</span>
                             
                           
                               <span class="step-duration">
@@ -1792,7 +1695,7 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Then </span>
-                          <span class="stepname"> I should take screenshot</span>
+                          <span> I should take screenshot</span>
                             
                           
                               <span class="step-duration">
@@ -1882,46 +1785,38 @@ pre {
 
 
 
-          
-  </div>
+    </div>
 
 
-
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <script type="text/javascript">
-    google.load("visualization", "1", { packages: ["corechart"] });
-    google.setOnLoadCallback(function () {
-      drawChart({
-        "title": "Features",
-        "failed": 0,
-        "passed": 2,
-        "notdefined": 0,
-        "pending": 0,
-        "skipped": 0,
-        "ambiguous": 0
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages: ["corechart"]});
+        google.setOnLoadCallback(function() {drawChart({
+                                                            "title" : "Features",
+                                                            "failed" : 0,
+                                                            "passed" : 2,
+                                                            "notdefined" : 0,
+                                                            "pending" : 0,
+                                                            "skipped" : 0,
+                                                            "ambiguous" : 0
                                                         })
-    });
-    google.setOnLoadCallback(function () {
-      drawChart({
-        "title": "Scenarios",
-        "failed": 0,
-        "passed": 5,
-        "rerun": 0,
-        "notdefined": 0,
-        "pending": 0,
-        "skipped": 0,
-        "ambiguous": 0
+                                            });
+        google.setOnLoadCallback(function() {drawChart({
+                                                            "title" : "Scenarios",
+                                                            "failed" : 0,
+                                                            "passed" : 5,
+                                                            "rerun" : 0,
+                                                            "notdefined" : 0,
+                                                            "pending" : 0,
+                                                            "skipped" : 0,
+                                                            "ambiguous" : 0
                                                         })
-    });
-  </script>
-  <script>
+                                            });
+    </script>
+    <script>
       $(document).ready(function () {
   $('.collapse')
     .on('hide.bs.collapse', function (e) {
@@ -1938,28 +1833,6 @@ pre {
   let timestamp = $generated.text();
   $generated.text('Report generated ' + moment(timestamp).fromNow());
   $generated.prop('title', new Date(timestamp).toISOString());
-});
-
-$(document).ready(function () {
-  const $collapsibleItems = $('[data-toggle="collapse"]');
-  const $collapseAllBtn = $('#collapse_all');
-  const $expandAllBtn = $('#expand_all');
-
-  const collapseAll = function () {
-    $collapsibleItems.each(function () {
-      $($(this).attr('href')).collapse('hide');
-    });
-  };
-
-  const expandAll = function () {
-    $collapsibleItems.each(function () {
-      $($(this).attr('href')).collapse('show');
-    });
-  };
-
-  $collapseAllBtn.on('click', collapseAll);
-  $expandAllBtn.on('click', expandAll);
-
 });
 
 function toggle(className) {
@@ -2048,7 +1921,6 @@ function toggle(className) {
   }
 });
 
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
