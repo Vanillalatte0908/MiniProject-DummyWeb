@@ -1,0 +1,17 @@
+.mp4
+
+.webm
+
+.zip
+
+playwright-report/**/*
+
+screenshots/**/*
+
+videos/**/*
+
+allure-report/**/*
+
+.html files around 20–40MB
+
+.json files that are very big
