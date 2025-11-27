@@ -22,22 +22,22 @@ test('test with logic', async ({ page }) => {
   if (await removeBackpack.isVisible()) {
     console.log("Backpack already in cart → removing it.");
     await removeBackpack.click();
-    await page.screenshot({ path: 'backpack-removed.png' });
+    await page.screenshot({ path: 'screenshots/backpack-removed.png' });
 
   } else if (await removeBikeLight.isVisible()) {
     console.log("Bike light already in cart → removing it.");
     await removeBikeLight.click();
-    await page.screenshot({ path: 'bikelight-removed.png' });
+    await page.screenshot({ path: 'screenshots/bikelight-removed.png' });
 
   } else if (await addBackpack.isVisible()) {
     console.log("Backpack NOT in cart → adding it.");
     await addBackpack.click();
-    await page.screenshot({ path: 'backpack-added.png' });
+    await page.screenshot({ path: 'screenshots/backpack-added.png' });
 
   } else if (await addBikeLight.isVisible()) {
     console.log("Bike light NOT in cart → adding it.");
     await addBikeLight.click();
-    await page.screenshot({ path: 'bikelight-added.png' });
+    await page.screenshot({ path: 'screenshots/bikelight-added.png' });
 
   } else {
     console.log("No add/remove buttons found for items.");

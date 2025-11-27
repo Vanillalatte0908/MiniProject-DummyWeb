@@ -3,6 +3,8 @@ module.exports = {
     require: ['features/steps/**/*.js'],   // ✅ correct relative path
     format: [
       'progress',
+      'allure-report',
+      'allure-results:reports/allure-results',
       'json:reports/cucumber_report.json',
       'html:reports/cucumber-report.html'
     ],

@@ -1,0 +1,6 @@
+sauce-labs-backpack: not in cart → adding it.
+sauce-labs-bike-light: not in cart → adding it.
+sauce-labs-bolt-t-shirt: not in cart → adding it.
+sauce-labs-fleece-jacket: not in cart → adding it.
+sauce-labs-onesie: not in cart → adding it.
+test.allthethings()-t-shirt-(red): not in cart → adding it.

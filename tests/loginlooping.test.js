@@ -9,13 +9,13 @@ async function handleItem(page, item) {
   if (await remove.isVisible()) {
     console.log(`${item}: already in cart → removing it.`);
     await remove.click();
-    await page.screenshot({ path: `${item}-removed.png` });
+    await page.screenshot({ path: `screenshots/${item}-removed.png` });
 
   // If the add button is visible → item is not yet added
   } else if (await add.isVisible()) {
     console.log(`${item}: not in cart → adding it.`);
     await add.click();
-    await page.screenshot({ path: `${item}-added.png` });
+    await page.screenshot({ path: `screenshots/${item}-added.png` });
 
   } else {
     console.log(`${item}: No add/remove buttons found.`);

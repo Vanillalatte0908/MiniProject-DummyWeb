@@ -15,7 +15,7 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Close Menu' }).click();
   await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
   await page.waitForTimeout(5000);
-  await page.screenshot({ path: 'item-added.png' });
+  await page.screenshot({ path: 'screenshots/item-added.png' });
   await page.locator('[data-test="shopping-cart-link"]').click();
   await page.waitForTimeout(5000);
   await page.screenshot({ path: 'screenshots/cart-view.png' });
